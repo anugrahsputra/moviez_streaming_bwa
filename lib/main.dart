@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Moviez Streaming',
       theme: ThemeData(
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: primaryColor,
               secondary: secondaryColor,
             ),
-        textTheme: textTheme,
+        fontFamily: 'Avenir',
       ),
       initialRoute: Home.routeName,
       routes: {

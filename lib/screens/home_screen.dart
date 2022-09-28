@@ -11,6 +11,8 @@ class Home extends StatelessWidget {
 
   final List<Movie> displayList = List.from(movieList);
 
+  final List<Movie> reversedList = List.from(movieList.reversed);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,6 +73,7 @@ class Home extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 24,
+                    bottom: 10,
                   ),
                   child: Text(
                     'From Disney',
@@ -79,11 +82,10 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 1.18,
+                  height: 320,
                   child: ListView.builder(
-                    reverse: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: displayList.length,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return _buildList(index);
                     },
@@ -110,7 +112,7 @@ class Home extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              displayList[index].poster!,
+              reversedList[index].poster!,
               width: 100,
               height: 125.6,
               fit: BoxFit.cover,
@@ -123,7 +125,7 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                displayList[index].title!,
+                reversedList[index].title!,
                 style: TextStyle(
                     fontSize: 20, fontWeight: black, color: primaryColor),
               ),
@@ -131,7 +133,7 @@ class Home extends StatelessWidget {
                 height: 4,
               ),
               Text(
-                displayList[index].genre!,
+                reversedList[index].genre!,
                 style: TextStyle(
                   fontSize: 16,
                   color: secondaryColor,
@@ -140,7 +142,7 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              RatingBarWidget(displayList: displayList, index: index),
+              RatingBarWidget(displayList: reversedList, index: index),
             ],
           ),
         ],
@@ -158,7 +160,7 @@ class Home extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(displayList[index].poster!),
+              image: NetworkImage(displayList[index].banner!),
               fit: BoxFit.cover,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
